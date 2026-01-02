@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "player.h"
 #include "code.h"
 #include "attempt.h"

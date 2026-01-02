@@ -2,12 +2,12 @@
 #include "code.h"
 #include "attempt.h"
 
+#define MAX_ATTEMPTS 10
+
 typedef enum {
     GAME_PVC,// Player Vs Computer
     GAME_PVP // Player vs Player
 } mode_t;
-
-#define MAX_ATTEMPTS 10
 
 typedef struct {
     player_t *player1; // Pointer to Player 1 (Code Breaker)
