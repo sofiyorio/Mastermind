@@ -3,6 +3,7 @@
 #include "attempt.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #define MAX_ATTEMPTS 10
 #define CODE_LENGTH 4
@@ -33,7 +34,7 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
     game->player2 = player2;
 
     // set game mode
-    if ( mode == 0 ) {
+    if ( mode == 1 ) {  // Fixed gamemode settup -Sof
         game->gamemode = GAME_PVC;
     }
     else {
@@ -80,6 +81,7 @@ void game_free(game_t* game) {
 }
 
 // Miru :)
+// + Sofi on the Hint relay
 void game_add_attempt(game_t* game, code_t* guess) {
     if (!game || !guess) return; // safety c heck
 
@@ -94,6 +96,9 @@ void game_add_attempt(game_t* game, code_t* guess) {
     // store attempt
     game->attempts[game->attempt_count] = attempt;
     game->attempt_count++;
+
+    printf("There were %d partial matches. \n", attempt_get_partial_match(attempt));
+    printf("There were %d total matches. \n\n", attempt_get_total_match(attempt));
 
     // used extra getter function
     if (attempt_get_total_match(attempt) == CODE_LENGTH) {

@@ -48,3 +48,9 @@ int attempt_get_total_match(const attempt_t* attempt) {
 	if (!attempt) return 0; //safety
 	return attempt->total_match;
 }
+
+// Sof
+int attempt_get_partial_match(const attempt_t* attempt) {
+	if (!attempt) return 0; //safety
+	return attempt->partial_match;
+}

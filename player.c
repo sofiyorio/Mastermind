@@ -72,4 +72,5 @@ void  players_creation(int  mode, player_t **player1, player_t **player2) {
 		*player2 = player_create(string, false);
 		break;
 	}
+	printf("\n");
 }
