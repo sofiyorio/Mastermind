@@ -10,6 +10,8 @@ typedef  struct {
 	bool is_computer; // necessary for Player Vs Computer games
 } player_t;
 
+// Sof
+// player_create: Const-Char* Bool -> player_t*
 player_t*  player_create(const  char *name, bool is_computer) {
 	player_t* player = (player_t*)malloc(sizeof(player_t));
 	if (player == NULL) {
@@ -28,20 +30,27 @@ player_t*  player_create(const  char *name, bool is_computer) {
 	return player;
 }
 
-
+// Sof
+// player_free: player_t* -> None
 void  player_free(player_t  *player) {
 	free(player->name);
 	free(player);
 }
 
+// Sof
+// player_get_name: player_t* -> Const-Char*
 const char*  player_get_name(player_t  *player) {
 	return player->name;
 }
 
+// Sof
+// player_is_computer: player_t* -> Bool
 bool  player_is_computer(player_t  *player) {
 	return player->is_computer;
 }
 
+// Sof
+// players_creation: Int player_t** player_t ** -> None
 void  players_creation(int  mode, player_t **player1, player_t **player2) {
 	char string[MAX_CHAR];
 	

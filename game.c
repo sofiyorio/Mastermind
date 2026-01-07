@@ -5,16 +5,17 @@
 #include <stdbool.h>
 
 #define MAX_ATTEMPTS 10
+#define CODE_LENGTH 4
 
 typedef enum {
     GAME_PVC,// Player Vs Computer
     GAME_PVP // Player vs Player
-} mode_t;
+} gamemode_t;
 
 typedef struct {
     player_t *player1; // Pointer to Player 1 (Code Breaker)
     player_t *player2; // Pointer to Player 2 (Code Maker)
-    mode_t gamemode; // Gamemode: PVC or PVP
+    gamemode_t gamemode; // Gamemode: PVC or PVP
     
     code_t *secret; // Pointer to secret code
     attempt_t *attempts[MAX_ATTEMPTS]; // Array of attempts

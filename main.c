@@ -5,7 +5,7 @@
 #include "game.h"
 
 int  main() {
-	printf("Welcome to Mastermind");
+	printf("Welcome to Mastermind \n");
 	int play = 1;
 	int gamemode;
 	
@@ -17,7 +17,7 @@ int  main() {
 
 	player_t *player1;
 	player_t *player2;
-	players_creation(gamemode, player1, player2);
+	players_creation(gamemode, &player1, &player2);
 	
 // run until player decides to stop playing
 	while (play) {

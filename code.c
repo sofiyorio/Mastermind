@@ -1,5 +1,6 @@
 #include "peg.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 #define CODE_LENGTH 4 // the fixed length of the code
 #define NUM_COLORS 8
