@@ -1,6 +1,7 @@
 #include "player.h"
 #include "code.h"
 #include "attempt.h"
+#include <stdlib.h>
 
 #define MAX_ATTEMPTS 10
 
@@ -20,3 +21,14 @@ typedef struct {
     
     bool is_won; // keeps track if game is won
 } game_t;
+
+// Miru :) 
+game_t* game_create(int mode, player_t *player1, player_t *player2) {
+    game_t* game = malloc(sizeof(game_t));
+    if (!game) return NULL;
+
+    game->player1 = player1;
+    game->player2 = player2;
+
+    game->gamemode = (mode == 0)
+}
