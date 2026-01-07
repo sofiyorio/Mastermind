@@ -78,6 +78,7 @@ void game_free(game_t* game) {
 
 }
 
+// Miru :)
 void game_add_attempt(game_t* game, code_t* guess) {
     if (!game || !guess) return; // safety c heck
 
@@ -93,7 +94,8 @@ void game_add_attempt(game_t* game, code_t* guess) {
     game->attempts[game->attempt_count] = attempt;
     game->attempt_count++;
 
-    if (attempt->total_match == CODE_LENGTH) {
+    // used extra getter function
+    if (attempt_get_total_match(attempt) == CODE_LENGTH) {
         game->is_won = true;
     }
     
