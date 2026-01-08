@@ -3,9 +3,8 @@
 #include "code.h"
 #include "attempt.h"
 #include "game.h"
+#include "defines.h"
 
-#define BOLD "\033[1m"
-#define RESET "\033[0m"
 
 int  main() {
 	printf("\n\n%sWelcome to Mastermind!%s\n\n", BOLD, RESET);

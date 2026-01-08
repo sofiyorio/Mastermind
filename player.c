@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_CHAR 50
+#include "defines.h"
 
 typedef  struct {
 	char* name; // player's name
@@ -53,8 +53,9 @@ bool  player_is_computer(player_t  *player) {
 // players_creation: Int player_t** player_t ** -> None
 void  players_creation(int  mode, player_t **player1, player_t **player2) {
 	char string[MAX_CHAR];
-	printf("\x1b[1F"); 
-    printf("\x1b[2K\n");
+	
+	printf("%s", LINE_UP); 
+    printf("%s\n", DELETE);
 
 	switch (mode) {
 	case 1:

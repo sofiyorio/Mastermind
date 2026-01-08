@@ -4,12 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-#define MAX_ATTEMPTS 10
-#define CODE_LENGTH 4
-
-#define ITALICS "\033[3m"
-#define RESET "\033[0m"
+#include "defines.h"
 
 typedef enum {
     GAME_PVC,// Player Vs Computer
@@ -61,8 +56,8 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
         
         for (int i = 0; i <= CODE_LENGTH+2; i++) {
             // Clear secret code from view -Sof
-            printf("\x1b[1F"); 
-            printf("\x1b[2K");
+            printf("%s", LINE_UP); 
+            printf("%s", DELETE);
         }
     }
 

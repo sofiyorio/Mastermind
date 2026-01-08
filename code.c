@@ -2,18 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define CODE_LENGTH 4 // the fixed length of the code
-#define NUM_COLORS 8
-
-#define COLOR_RED     "\033[38;2;233;87;79m"
-#define COLOR_ORANGE "\033[38;2;255;161;74m"
-#define COLOR_YELLOW "\033[38;2;255;220;66m"
-#define COLOR_GREEN "\033[38;2;102;222;58m"
-#define COLOR_BLUE "\033[38;2;79;143;216m"
-#define COLOR_PURPLE "\033[38;2;152;85;197m"
-#define COLOR_PINK "\033[38;2;255;79;149m"
-#define COLOR_BLACK "\033[0m"
-#define BOLD "\033[1m"
+#include "defines.h"
 
 typedef struct {
 	peg_t *pegs[CODE_LENGTH]; // array of pointer to pegs

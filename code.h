@@ -2,10 +2,12 @@
 #define CODE_H
 #include "peg.h"
 
-// opaque player structure
+// Opaque player structure
 typedef struct code_t code_t;
 
-// function prototypes
+// Function prototypes
+
+
 code_t* code_create_random(void);
 code_t* code_create_manual(void);
 void  code_free(code_t* code);
