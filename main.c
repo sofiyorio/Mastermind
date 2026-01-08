@@ -37,7 +37,7 @@ int  main() {
             printf("Congratulations %s, you did it! \n\n", player_get_name(player2));
         } else {
             if (gamemode == 2) {
-                printf("%s code was too hard to break!\n", player_get_name(player1));
+                printf("%s's code was too hard to break!\n", player_get_name(player1));
             }
             printf("Code not broken, better luck next time!\n");
         }

@@ -32,7 +32,7 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
     game->player2 = player2;
 
     // set game mode
-    if ( mode == 1 ) {  // Fixed gamemode settup -Sof
+    if ( mode == 1 ) { 
         game->gamemode = GAME_PVC;
     }
     else {
@@ -92,7 +92,7 @@ void game_free(game_t* game) {
 // Miru :)
 // + Sofi on the Hint relay
 void game_add_attempt(game_t* game, code_t* guess) {
-    if (!game || !guess) return; // safety c heck
+    if (!game || !guess) return; // safety check
 
     if (game->attempt_count >= MAX_ATTEMPTS) return; // no attempt left
 
