@@ -18,8 +18,8 @@ attempt_t* attempt_create(code_t* guess);
 void attempt_free(attempt_t* attempt);
 
 /// @brief Evaluates if two given attempts have any partial or total matches.
-/// @param attempt The codebreaker attempt.
-/// @param secret The codemaker secret code.
+/// @param attempt The codebreaker's attempt.
+/// @param secret The codemaker's secret code.
 void attempt_evaluate(attempt_t* attempt, const code_t* secret);
 
 /// @brief A getter function for an attempt's total match member.
