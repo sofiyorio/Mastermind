@@ -45,7 +45,7 @@ int  main() {
         
         printf("Play another round? (1 = yes, 0 = no): ");
         scanf("%d", &play);
-        if (play=1) {   // Switch roles at the end of the round
+        if (play==1 && gamemode==2) {   // Switch roles at the end of the round
             player_t* temp = player1;
             player1 = player2;
             player2 = temp;
