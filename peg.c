@@ -21,6 +21,9 @@ struct peg_t {
 // peg_create: Int -> peg_t*
 peg_t *peg_create(int color) {
     peg_t* peg = (peg_t*) malloc(sizeof(peg_t));
+	if (peg == NULL) {
+        return NULL;
+    }
     peg->color = (color_t)color;
 
     return peg;

@@ -55,14 +55,14 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
         game->secret = code_create_manual();
         
         for (int i = 0; i <= CODE_LENGTH+2; i++) {
-            // Clear secret code from view -Sof
+            // Clear secret code from view - Sof
             printf("%s", LINE_UP); 
             printf("%s", DELETE);
         }
     }
 
     printf("\n\nSecret code was created. You have now %d attempts to try and break it. \nGood luck, %s!\n\n", MAX_ATTEMPTS,  player_get_name(player2));
-    // Aesthetic game printing
+    
 
     return game;
 }
@@ -70,7 +70,7 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
 // Miru :)
 void game_free(game_t* game) {
 
-    if(!game) return; //safetyy - to prevent crash
+    if(!game) return; // safetyy - to prevent crash
 
     // free all attempts
     for ( int i = 0; i < game->attempt_count; i ++ ) {
@@ -90,11 +90,10 @@ void game_free(game_t* game) {
 }
 
 // Miru :)
-// + Sofi on the Hint relay
 void game_add_attempt(game_t* game, code_t* guess) {
     if (!game || !guess) return; // safety check
 
-    if (game->attempt_count >= MAX_ATTEMPTS) return; // no attempt left
+    if (game->attempt_count >= MAX_ATTEMPTS) return; // no attempts left
 
     // create attempt
     attempt_t* attempt = attempt_create(guess);
@@ -106,10 +105,11 @@ void game_add_attempt(game_t* game, code_t* guess) {
     game->attempts[game->attempt_count] = attempt;
     game->attempt_count++;
 
+    // Print feedback -Sofi
     printf("There were %d partial matches. \n", attempt_get_partial_match(attempt));
     printf("There were %d total matches. \n\n", attempt_get_total_match(attempt));
     
-    // used extra getter function
+    // used an extra getter function
     if (attempt_get_total_match(attempt) == CODE_LENGTH) {
         game->is_won = true;
     }

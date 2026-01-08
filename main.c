@@ -17,6 +17,7 @@ int  main() {
 	printf("    2. Player vs Player\n");
 	scanf("%d", &gamemode);
 
+    // players creation
 	player_t *player1;
 	player_t *player2;
 	players_creation(gamemode, &player1, &player2);

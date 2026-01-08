@@ -24,7 +24,7 @@ attempt_t* attempt_create(code_t* guess) {
 
 // Miru :)
 void attempt_free(attempt_t* attempt) {
-	if (!attempt) return; //safety check
+	if (!attempt) return; // safety check
 
 	// freeing guess
 	if (attempt->guess) {
@@ -42,15 +42,14 @@ void attempt_evaluate(attempt_t* attempt, const code_t* secret) {
 
 }
 
-// Miru :) ++ extra function, needed getter function
-// needed to get total match, and keep struct opaque
+// Miru :) 
 int attempt_get_total_match(const attempt_t* attempt) {
-	if (!attempt) return 0; //safety
+	if (!attempt) return 0; // safety
 	return attempt->total_match;
 }
 
 // Sof
 int attempt_get_partial_match(const attempt_t* attempt) {
-	if (!attempt) return 0; //safety
+	if (!attempt) return 0; // Safety
 	return attempt->partial_match;
 }

@@ -13,17 +13,19 @@ typedef  struct {
 // Sof
 // player_create: Const-Char* Bool -> player_t*
 player_t*  player_create(const  char *name, bool is_computer) {
+	// Memory allocate a player
 	player_t* player = (player_t*)malloc(sizeof(player_t));
 	if (player == NULL) {
         return NULL;
     }
 
+	// Allocate the name
     char* string = (char*) malloc(1+(strlen(name))*sizeof(char));
 	if (string == NULL) {
 		free(player);
         return NULL;
     }
-    player->name = strcpy(string, name);
+    player->name = strcpy(string, name); // Copy the name to the player
 
 	player->is_computer = is_computer;
 
@@ -58,14 +60,14 @@ void  players_creation(int  mode, player_t **player1, player_t **player2) {
     printf("%s\n", DELETE);
 
 	switch (mode) {
-	case 1:
+	case 1: // Singleplayer Gamemode
 		*player1 = player_create("Computer", true);
 		printf("Input your name: ");
 		scanf("%s", string);
 		*player2 = player_create(string, false);
 		break;
 	
-	case 2:
+	case 2: // Multiplayer Gamemode
 		printf("Input codemaker's name: ");
 		scanf("%s", string);
 		*player1 = player_create(string, false);

@@ -63,7 +63,7 @@ code_t* code_create_manual(void) {
 			}
 
 			if ( color >= 0 && color < NUM_COLORS) break;
-			printf("Hmm... the number you entered isn't right. :/ \n"); // in case the numbered entered isn't in the set range
+			printf("Hmm... the number you entered isn't right. :/ \n"); // in case the number entered isn't in the set range
 		}
 		
 		code->pegs[i] = peg_create(color);
@@ -91,7 +91,7 @@ void code_compare(const code_t* secret, const code_t* guess, int* total_match, i
 	*total_match = 0;
 	*partial_match = 0;
 
-	// preventing recounting pegs
+	// to prevent recounting pegs
 	bool secret_used[CODE_LENGTH] = {false};
 	bool guess_used[CODE_LENGTH] = {false};
 
