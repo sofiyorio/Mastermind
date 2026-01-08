@@ -29,6 +29,7 @@ int  main() {
         while (!game_is_over(game)) {
             code_t* guess = code_create_manual();
             game_add_attempt(game, guess);
+            printf("You have %d attempts left.\n\n\n", game_attempts_left(game));
         }
         
         if (game_is_won(game)) {

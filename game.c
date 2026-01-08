@@ -108,8 +108,7 @@ void game_add_attempt(game_t* game, code_t* guess) {
 
     printf("There were %d partial matches. \n", attempt_get_partial_match(attempt));
     printf("There were %d total matches. \n\n", attempt_get_total_match(attempt));
-    printf("You have %d attempts left.\n\n\n", MAX_ATTEMPTS-game->attempt_count);
-
+    
     // used extra getter function
     if (attempt_get_total_match(attempt) == CODE_LENGTH) {
         game->is_won = true;
