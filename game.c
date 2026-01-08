@@ -8,6 +8,9 @@
 #define MAX_ATTEMPTS 10
 #define CODE_LENGTH 4
 
+#define ITALICS "\033[3m"
+#define RESET "\033[0m"
+
 typedef enum {
     GAME_PVC,// Player Vs Computer
     GAME_PVP // Player vs Player
@@ -52,9 +55,11 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
     }
 
     else {
+        printf("\n\n    %s%s, look away!%s\n\n\n\n", ITALICS, player_get_name(player2), RESET);
         printf("%s! You are the codemaker. Select %d colors for your secret code! \n", player_get_name(player1), CODE_LENGTH);
         game->secret = code_create_manual();
-        for (int i = 0; i <= CODE_LENGTH; i++) {
+        
+        for (int i = 0; i <= CODE_LENGTH+2; i++) {
             // Clear secret code from view -Sof
             printf("\x1b[1F"); 
             printf("\x1b[2K");
@@ -108,6 +113,7 @@ void game_add_attempt(game_t* game, code_t* guess) {
 
     printf("There were %d partial matches. \n", attempt_get_partial_match(attempt));
     printf("There were %d total matches. \n\n", attempt_get_total_match(attempt));
+    printf("You have %d attempts left.\n\n\n", MAX_ATTEMPTS-game->attempt_count);
 
     // used extra getter function
     if (attempt_get_total_match(attempt) == CODE_LENGTH) {

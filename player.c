@@ -53,7 +53,9 @@ bool  player_is_computer(player_t  *player) {
 // players_creation: Int player_t** player_t ** -> None
 void  players_creation(int  mode, player_t **player1, player_t **player2) {
 	char string[MAX_CHAR];
-	
+	printf("\x1b[1F"); 
+    printf("\x1b[2K\n");
+
 	switch (mode) {
 	case 1:
 		*player1 = player_create("Computer", true);

@@ -13,6 +13,7 @@
 #define COLOR_PURPLE "\033[38;2;152;85;197m"
 #define COLOR_PINK "\033[38;2;255;79;149m"
 #define COLOR_BLACK "\033[0m"
+#define BOLD "\033[1m"
 
 typedef struct {
 	peg_t *pegs[CODE_LENGTH]; // array of pointer to pegs
@@ -44,7 +45,7 @@ code_t* code_create_manual(void) {
 	printf("Enter %d colors: ", CODE_LENGTH);
 	printf("%s0 = RED, %s1 = ORANGE, %s2 = YELLOW, %s3 = GREEN, %s4 = BLUE, %s5 = PURPLE, %s6 = PINK, %s7 = BLACK.\n", 
 		COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_PURPLE, COLOR_PINK, COLOR_BLACK);
-
+	
 	for ( int i = 0; i < CODE_LENGTH; i ++ ) {
 		int color;
 		while(1) {
@@ -52,7 +53,7 @@ code_t* code_create_manual(void) {
 			
 			if ( scanf("%d", &color) != 1 ) { // checks if input is a number
 				while (getchar() != '\n'); // if user typeds a chracter it clears input
-				printf("Please enter a valid number!! :(\n");
+				printf("Please enter a valid number! :(\n");
 				continue; // skipping the rest of the loop
 			}
 			switch(color) {
@@ -71,17 +72,17 @@ code_t* code_create_manual(void) {
 			case 6:
 				codePrint[i] = COLOR_PINK;	break;
 			case 7:
-				codePrint[i] = COLOR_BLACK;	
+				codePrint[i] = COLOR_BLACK;	break;
 			}
 
 			if ( color >= 0 && color < NUM_COLORS) break;
-			printf("Hmm.. the number you entered isn't right. :/ \n"); // in case the numbered entered isn't in the set range
+			printf("Hmm... the number you entered isn't right. :/ \n"); // in case the numbered entered isn't in the set range
 		}
 		
 		code->pegs[i] = peg_create(color);
 	}
 
-	printf("The code you created is: %sO%sO%sO%sO \n", codePrint[0], codePrint[1], codePrint[2], codePrint[3]);
+	printf("\nThe code you created is: %s%s0 %s0 %s0 %s0 %s \n", BOLD, codePrint[0], codePrint[1], codePrint[2], codePrint[3], COLOR_BLACK);
 	return code;
 }
 

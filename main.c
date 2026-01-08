@@ -4,15 +4,18 @@
 #include "attempt.h"
 #include "game.h"
 
+#define BOLD "\033[1m"
+#define RESET "\033[0m"
+
 int  main() {
-	printf("Welcome to Mastermind \n");
+	printf("\n\n%sWelcome to Mastermind!%s\n\n", BOLD, RESET);
 	int play = 1;
 	int gamemode;
 	
 	// mode selection
 	printf("Choose game mode:\n");  
-	printf("1. Player vs Computer\n");
-	printf("2. Player vs Player\n");
+	printf("    1. Player vs Computer\n");
+	printf("    2. Player vs Player\n");
 	scanf("%d", &gamemode);
 
 	player_t *player1;
@@ -42,6 +45,11 @@ int  main() {
         
         printf("Play another round? (1 = yes, 0 = no): ");
         scanf("%d", &play);
+        if (play=1) {   // Switch roles at the end of the round
+            player_t* temp = player1;
+            player1 = player2;
+            player2 = temp;
+        }
     }
     
     return 0;
