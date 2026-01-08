@@ -31,13 +31,18 @@ int  main() {
         
         if (game_is_won(game)) {
             printf("Code broken!\n");
+            printf("Congratulations %s, you did it! \n\n", player_get_name(player2));
         } else {
-            printf("Code not broken.\n");
+            if (gamemode == 2) {
+                printf("%s code was too hard to break!\n", player_get_name(player1));
+            }
+            printf("Code not broken, better luck next time!\n");
         }
         game_free(game);
         
         printf("Play another round? (1 = yes, 0 = no): ");
         scanf("%d", &play);
     }
+    
     return 0;
 }

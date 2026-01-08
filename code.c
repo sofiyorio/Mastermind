@@ -5,6 +5,15 @@
 #define CODE_LENGTH 4 // the fixed length of the code
 #define NUM_COLORS 8
 
+#define COLOR_RED     "\033[38;2;233;87;79m"
+#define COLOR_ORANGE "\033[38;2;255;161;74m"
+#define COLOR_YELLOW "\033[38;2;255;220;66m"
+#define COLOR_GREEN "\033[38;2;102;222;58m"
+#define COLOR_BLUE "\033[38;2;79;143;216m"
+#define COLOR_PURPLE "\033[38;2;152;85;197m"
+#define COLOR_PINK "\033[38;2;255;79;149m"
+#define COLOR_BLACK "\033[0m"
+
 typedef struct {
 	peg_t *pegs[CODE_LENGTH]; // array of pointer to pegs
 } code_t;
@@ -20,6 +29,8 @@ code_t* code_create_random(void) {
 		code->pegs[i] = peg_create(color);
 	}
 
+	printf("Generating secret code...\n"); // Added for aesthetics -Sof
+
 	return code;
 }
 
@@ -27,27 +38,50 @@ code_t* code_create_random(void) {
 // creating a manual code - entered by user
 code_t* code_create_manual(void) {
 	code_t* code = malloc(sizeof(code_t));
+	char*codePrint[CODE_LENGTH];
 	if (!code) return NULL;
 
-	printf("Enter %d colors for your code!\n", CODE_LENGTH);
-	printf("0 = RED, 1 = ORANGE, 2 = YELLOW, 3 = GREEN, 4 = BLUE, 5 = PURPLE, 6 = PINK, 7 = BLACK.\n");
+	printf("Enter %d colors: ", CODE_LENGTH);
+	printf("%s0 = RED, %s1 = ORANGE, %s2 = YELLOW, %s3 = GREEN, %s4 = BLUE, %s5 = PURPLE, %s6 = PINK, %s7 = BLACK.\n", 
+		COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_PURPLE, COLOR_PINK, COLOR_BLACK);
 
 	for ( int i = 0; i < CODE_LENGTH; i ++ ) {
 		int color;
 		while(1) {
-			printf("Color of peg %d should be:", i + 1);
+			printf("Color of peg %d should be: ", i + 1);
+			
 			if ( scanf("%d", &color) != 1 ) { // checks if input is a number
 				while (getchar() != '\n'); // if user typeds a chracter it clears input
 				printf("Please enter a valid number!! :(\n");
 				continue; // skipping the rest of the loop
 			}
+			switch(color) {
+			case 0:
+				codePrint[i] = COLOR_RED;	break;
+			case 1:
+				codePrint[i] = COLOR_ORANGE;	break;
+			case 2:
+				codePrint[i] = COLOR_YELLOW;	break;
+			case 3:
+				codePrint[i] = COLOR_GREEN;	break;
+			case 4:
+				codePrint[i] = COLOR_BLUE;	break;
+			case 5:	
+				codePrint[i] = COLOR_PURPLE;	break;
+			case 6:
+				codePrint[i] = COLOR_PINK;	break;
+			case 7:
+				codePrint[i] = COLOR_BLACK;	
+			}
 
 			if ( color >= 0 && color < NUM_COLORS) break;
 			printf("Hmm.. the number you entered isn't right. :/ \n"); // in case the numbered entered isn't in the set range
 		}
-
+		
 		code->pegs[i] = peg_create(color);
 	}
+
+	printf("The code you created is: %sO%sO%sO%sO \n", codePrint[0], codePrint[1], codePrint[2], codePrint[3]);
 	return code;
 }
 

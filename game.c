@@ -52,8 +52,17 @@ game_t* game_create(int mode, player_t *player1, player_t *player2) {
     }
 
     else {
+        printf("%s! You are the codemaker. Select %d colors for your secret code! \n", player_get_name(player1), CODE_LENGTH);
         game->secret = code_create_manual();
+        for (int i = 0; i <= CODE_LENGTH; i++) {
+            // Clear secret code from view -Sof
+            printf("\x1b[1F"); 
+            printf("\x1b[2K");
+        }
     }
+
+    printf("\n\nSecret code was created. You have now %d attempts to try and break it. \nGood luck, %s!\n\n", MAX_ATTEMPTS,  player_get_name(player2));
+    // Aesthetic game printing
 
     return game;
 }
